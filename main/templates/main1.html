@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'android-chrome-192x192.png' %}">
+        <link rel="manifest" href="{% static 'site.webmanifest' %}">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Portfolio</title>
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        <style type="text/tailwindcss">
+                @theme{
+                --color-pampas-50: #f4f3ee;
+                --color-pampas-100: #efede6;
+                --color-pampas-200: #dddacb;
+                --color-pampas-300: #c7c1aa;
+                --color-pampas-400: #b0a487;
+                --color-pampas-500: #a0916f;
+                --color-pampas-600: #938063;
+                --color-pampas-700: #7b6a53;
+                --color-pampas-800: #655747;
+                --color-pampas-900: #52473c;
+                --color-pampas-950: #2b241f;
+                --color-rose-fog-50: #fbf6f5;
+                --color-rose-fog-100: #f8ece8;
+                --color-rose-fog-200: #f3dcd5;
+                --color-rose-fog-300: #e9c3b8;
+                --color-rose-fog-400: #e0afa0;
+                --color-rose-fog-500: #c9806a;
+                --color-rose-fog-600: #b4664e;
+                --color-rose-fog-700: #97533e;
+                --color-rose-fog-800: #7d4737;
+                --color-rose-fog-900: #694033;
+                --color-rose-fog-950: #381f17;
+            }
+          </style>
+    </head>
+    <body class="animate__animated animate__fadeInDown bg-linear-to-b from-pampas-50 to-rose-fog-400 text-slate-800">
+        <div class="flex items-center justify-evenly p-10">
+            <p class="text-4xl ">I'm Oleksandr Izhyk <br>Trainee python programmer!</p>
+            <img src="{% static 'portret.jpg' %}" class="shrink h-250 w-150 rounded-xl grayscale-50 m-5">
+        </div>
+        <div class="flex justify-center items-center text-3xl">
+            <ul class="bg-amber-200 rounded-2xl p-3 list-disc list-inside m-5">
+                <p class="place-self-center">Skills/modules</p>
+                <li>Programming fundamentals</li><li>Python syntax</li><li>PIL</li><li>Pygame</li><li>Flask</li><li>Fastapi</li><li>HTML, CSS</li><li>Panda 3d</li><li>Pandas</li><li>Kivy</li><li>OOP</li><li>PyQt</li>
+            </ul>
+            <p class="">I'm 16 and I dreaming about become a cybersecurity specialist. But now I studing in Polonne Lyceum №7, and It school "Logika".</p>
+        </div>
+        <div class="flex-auto grid-cols-3 gap-3 justify-items-center text-2xl space-y-3 p-5">
+            <p class="">My projects</p>
+                {% for project in projects %}
+                    <a class="hover:text-blue-400 hover:underline" href="{{ project.link }}">
+                        {{ project.title }}
+                    </a>
+                {% endfor %}
+        </div>
+        <form method="post" class="bg-yellow-50 justify-items-center items-start">{% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="bg-indigo-500 rounded-2xl m-5 p-3 hover:scale-110 hover:-translate-1 transition delay-75 duration-200 text-white">Send</button>
+        </form>
+        <!--form-->
+        <footer class="flex-auto bg-amber-500 space-x-2">
+        <div class="justify-items-center p-10 flex-initial space-y-3 bg-amber-400">
+            <p class="text-4xl">Contact me</p>
+            <div class="flex justify-evenly justify-items-center space-x-3 text-2xl">
+                <a class="hover:text-blue-400 hover:underline" href="https://www.linkedin.com/in/олександр-василь-іжик-08b8a1288/">My linkedin</a>
+                <a class="hover:text-blue-400 hover:underline" href="https://github.com/enotspace">My github</a>
+                <a class="hover:text-blue-400 hover:underline" href="https://discord.com/users/mrbebra.1">My discord</a>
+            </div>
+        </div>
+        <div class="flex justify-center space-x-2">
+            <i class="text-slate-800/30">Tertiary developer, Arkadiy, Secondary ideologue of C--</i>
+            <i class="text-slate-800/30">2025</i>
+        </div>
+        </footer>
+    </body>
+</html>
