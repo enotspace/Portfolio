@@ -1,7 +1,9 @@
 #from django.utils.translation import gettext_lazy as _
-from django.template import loader
-from django.http import HttpResponse
+from django.shortcuts import render
+from . import models
+from .forms import formform
 
 def main(request):
-    template = loader.get_template('main.html')
-    return HttpResponse(template.render())
+    allprojects=models.Projects.objects.all()
+    form = formform()
+    return render(request, 'main.html', {'projects':allprojects, 'form':form})
